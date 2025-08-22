@@ -2,15 +2,19 @@ package com.amigoscodespringbootbeginner;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-public class AmigoscodeSpringbootBeginnerApplication {
+@RestController
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(AmigoscodeSpringbootBeginnerApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
+    @GetMapping
     public String helloWord() {
-        return "Hello World!";
+        return "Hello World Spring Boot!";
     }
 }
