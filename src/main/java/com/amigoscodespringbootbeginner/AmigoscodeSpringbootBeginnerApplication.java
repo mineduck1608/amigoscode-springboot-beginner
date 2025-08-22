@@ -10,4 +10,7 @@ public class AmigoscodeSpringbootBeginnerApplication {
         SpringApplication.run(AmigoscodeSpringbootBeginnerApplication.class, args);
     }
 
+    public String helloWord() {
+        return "Hello World!";
+    }
 }
