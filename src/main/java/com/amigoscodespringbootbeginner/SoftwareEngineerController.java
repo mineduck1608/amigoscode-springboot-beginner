@@ -1,21 +1,30 @@
 package com.amigoscodespringbootbeginner;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/software-engineers")
 public class SoftwareEngineerController {
+    private SoftwareEngineerService softwareEngineerService;
+
+    public SoftwareEngineerController(SoftwareEngineerService softwareEngineerService) {
+        this.softwareEngineerService = softwareEngineerService;
+    }
 
     @GetMapping
     public List<SoftwareEngineer> getSoftwareEngineers() {
-        return List.of(
-                new SoftwareEngineer("Java", 1, "John Doe"),
-                new SoftwareEngineer("Python", 2, "Jane Smith"),
-                new SoftwareEngineer("JavaScript", 3, "Alice Johnson")
-        );
-    };
+        return softwareEngineerService.getAllSoftwareEngineers();
+    }
+
+    @GetMapping("{id}")
+    public SoftwareEngineer getSoftwareEngineerById(@PathVariable Integer id) {
+        return softwareEngineerService.getSoftwareEngineerById(id);
+    }
+
+    @PostMapping
+    public void addNewSoftwareEngineer(@RequestBody SoftwareEngineer softwareEngineer) {
+        softwareEngineerService.addNewSoftwareEngineer(softwareEngineer);
+    }
 }
